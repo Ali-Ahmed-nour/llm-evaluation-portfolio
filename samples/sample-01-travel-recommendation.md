@@ -1,4 +1,4 @@
-# Sample 01: Travel Recommendation (Multi-turn)
+# Sample 01: Travel Recommendation (Multi-turn + SxS)
 
 ## 📋 Scenario
 
@@ -10,15 +10,20 @@
 - Email: Flight price alerts for Athens
 - Budget preference: Mid-range (based on past bookings)
 
+**Task:** User asks for vacation planning help. Evaluate how each model uses personal context across multiple turns.
+
 ---
 
-## 💬 Conversation
+---
+
+# 🅰️ MODEL A
+
+## Conversation
 
 ### Turn 1
-
 **User:** "I'm planning my summer vacation. Any suggestions?"
 
-**Response A:**
+**Model A:**
 > "Based on your interests, I'd recommend considering Greece for your summer vacation! Here are some options:
 > 1. Santorini - Beautiful beaches and stunning sunsets
 > 2. Mykonos - Great nightlife and beaches
@@ -26,18 +31,12 @@
 >
 > Would you like more specific recommendations?"
 
-**Response B:**
-> "Given your recent searches for Greek beaches and Santorini hotels, plus your love for Mediterranean destinations (Italy 2022, Spain 2023), Greece sounds perfect!
->
-> Your August 15-25 vacation window gives you 10 days — ideal for a 2-island trip. Want me to suggest an itinerary?"
-
 ---
 
 ### Turn 2
-
 **User:** "Yes, I'd love a 2-island itinerary!"
 
-**Response A:**
+**Model A:**
 > "Great! Here's a suggested itinerary:
 >
 > **Days 1-5: Santorini**
@@ -52,7 +51,92 @@
 >
 > Would you like hotel recommendations?"
 
-**Response B:**
+---
+
+### Turn 3
+**User:** "What about the flights? I want to keep costs down."
+
+**Model A:**
+> "For flights to Greece, I recommend:
+> - Book 4-6 weeks in advance for best prices
+> - Consider flying midweek (Tuesday/Wednesday)
+> - Athens is usually the cheapest entry point
+> - Budget airlines like Ryanair and easyJet often have deals
+>
+> Would you like me to search for specific flights?"
+
+---
+
+## 🅰️ Model A Evaluation
+
+### Turn 1 Analysis
+| Dimension | Score | Notes |
+|-----------|-------|-------|
+| Grounding | ⚠️ Weak | Mentions Greece but doesn't reference user's search history |
+| Integration | ❌ Poor | Generic list, no personal context |
+| Helpfulness | ⚠️ Basic | Provides options but no tailored reasoning |
+| Naturalness | ✅ Good | Clean and readable |
+
+**Turn 1 Summary:** Generic response that could apply to any user.
+
+---
+
+### Turn 2 Analysis
+| Dimension | Score | Notes |
+|-----------|-------|-------|
+| Grounding | ❌ None | No dates, budget, or preferences used |
+| Integration | ❌ Poor | Cookie-cutter itinerary |
+| Helpfulness | ⚠️ Basic | Standard tourist suggestions |
+| Naturalness | ✅ Good | Well-structured |
+
+**Turn 2 Summary:** Provides itinerary but ignores user's specific dates (Aug 15-25) and budget.
+
+---
+
+### Turn 3 Analysis
+| Dimension | Score | Notes |
+|-----------|-------|-------|
+| Grounding | ❌ None | Ignores existing flight alerts |
+| Integration | ❌ Poor | Generic advice, not personalized |
+| Helpfulness | ⚠️ Basic | General tips only |
+| Naturalness | ✅ Good | Clear formatting |
+
+**Turn 3 Summary:** Misses opportunity to leverage flight alerts data.
+
+---
+
+### 🅰️ Model A Overall Assessment
+
+| Strength | Weakness |
+|----------|----------|
+| Clean formatting | Zero personalization |
+| Factually accurate | No use of user profile |
+| Easy to read | Treats each turn independently |
+
+**Personalization Score: 2/10**
+
+---
+
+---
+
+# 🅱️ MODEL B
+
+## Conversation
+
+### Turn 1
+**User:** "I'm planning my summer vacation. Any suggestions?"
+
+**Model B:**
+> "Given your recent searches for Greek beaches and Santorini hotels, plus your love for Mediterranean destinations (Italy 2022, Spain 2023), Greece sounds perfect!
+>
+> Your August 15-25 vacation window gives you 10 days — ideal for a 2-island trip. Want me to suggest an itinerary?"
+
+---
+
+### Turn 2
+**User:** "Yes, I'd love a 2-island itinerary!"
+
+**Model B:**
 > "Perfect! Here's a personalized 10-day itinerary for August 15-25:
 >
 > **Days 1-5 (Aug 15-20): Santorini**
@@ -70,19 +154,9 @@
 ---
 
 ### Turn 3
-
 **User:** "What about the flights? I want to keep costs down."
 
-**Response A:**
-> "For flights to Greece, I recommend:
-> - Book 4-6 weeks in advance for best prices
-> - Consider flying midweek (Tuesday/Wednesday)
-> - Athens is usually the cheapest entry point
-> - Budget airlines like Ryanair and easyJet often have deals
->
-> Would you like me to search for specific flights?"
-
-**Response B:**
+**Model B:**
 > "Smart thinking! Based on your Athens flight alerts, here's what I'd suggest:
 >
 > **Timing:** You're 5 weeks out from August 15 — prices typically drop in the next 1-2 weeks. I'd watch those alerts closely.
@@ -95,95 +169,129 @@
 
 ---
 
-## 📊 Turn-by-Turn Evaluation
+## 🅱️ Model B Evaluation
 
-### Turn 1 Evaluation
+### Turn 1 Analysis
+| Dimension | Score | Notes |
+|-----------|-------|-------|
+| Grounding | ✅ Strong | Uses search history, past trips, calendar dates |
+| Integration | ✅ Excellent | Weaves context naturally into suggestion |
+| Helpfulness | ✅ Strong | Proactively suggests 2-island format |
+| Naturalness | ✅ Good | Conversational without overnarrating |
 
-| Dimension | Response A | Response B |
-|-----------|------------|------------|
-| **Grounding** | ⚠️ Weak — no personal data used | ✅ Strong — searches, past trips, calendar |
-| **Integration** | ❌ Generic list | ✅ Natural context weaving |
-| **Helpfulness** | ⚠️ Basic | ✅ Actionable (2-island suggestion) |
-
-**Turn 1 Winner: Response B**
-
----
-
-### Turn 2 Evaluation
-
-| Dimension | Response A | Response B |
-|-----------|------------|------------|
-| **Grounding** | ❌ No personal data | ✅ Uses budget, dates, past preferences |
-| **Integration** | ⚠️ Generic itinerary | ✅ Personalized with specific dates |
-| **Helpfulness** | ⚠️ Standard suggestions | ✅ Budget tips, alternative island |
-| **Naturalness** | ✅ Clean | ✅ Conversational |
-
-**Turn 2 Winner: Response B**
+**Turn 1 Summary:** Excellent personalization, sets up conversation well.
 
 ---
 
-### Turn 3 Evaluation
+### Turn 2 Analysis
+| Dimension | Score | Notes |
+|-----------|-------|-------|
+| Grounding | ✅ Strong | Uses dates, budget, past preferences, flight alerts |
+| Integration | ✅ Excellent | Personal data supports recommendations |
+| Helpfulness | ✅ Excellent | Specific prices, smart alternative (Milos vs Mykonos) |
+| Naturalness | ✅ Good | Personalization feels helpful, not creepy |
 
-| Dimension | Response A | Response B |
-|-----------|------------|------------|
-| **Grounding** | ❌ Generic advice | ✅ References flight alerts, specific dates |
-| **Integration** | ❌ Could apply to anyone | ✅ Tailored to user's situation |
-| **Helpfulness** | ⚠️ General tips | ✅ Specific savings strategy |
-| **Accuracy** | ✅ Correct | ✅ Correct |
+**Turn 2 Summary:** Builds on Turn 1, adds actionable details.
 
-**Turn 3 Winner: Response B**
+---
+
+### Turn 3 Analysis
+| Dimension | Score | Notes |
+|-----------|-------|-------|
+| Grounding | ✅ Strong | References flight alerts, specific dates |
+| Integration | ✅ Excellent | Connects all previous context |
+| Helpfulness | ✅ Excellent | Specific savings strategy (€50-100) |
+| Naturalness | ✅ Good | Practical advice tone |
+
+**Turn 3 Summary:** Perfect use of user context to provide cost-saving advice.
+
+---
+
+### 🅱️ Model B Overall Assessment
+
+| Strength | Weakness |
+|----------|----------|
+| Consistent personalization | None significant |
+| Strong conversation memory | |
+| Actionable recommendations | |
+| Natural integration | |
+
+**Personalization Score: 9/10**
+
+---
+
+---
+
+# ⚖️ SIDE-BY-SIDE (SxS) COMPARISON
+
+## Turn-by-Turn Comparison
+
+| Turn | Dimension | Model A | Model B | Winner |
+|------|-----------|---------|---------|--------|
+| 1 | Grounding | ⚠️ Weak | ✅ Strong | **B** |
+| 1 | Integration | ❌ Poor | ✅ Excellent | **B** |
+| 1 | Helpfulness | ⚠️ Basic | ✅ Strong | **B** |
+| 2 | Grounding | ❌ None | ✅ Strong | **B** |
+| 2 | Integration | ❌ Poor | ✅ Excellent | **B** |
+| 2 | Helpfulness | ⚠️ Basic | ✅ Excellent | **B** |
+| 3 | Grounding | ❌ None | ✅ Strong | **B** |
+| 3 | Integration | ❌ Poor | ✅ Excellent | **B** |
+| 3 | Helpfulness | ⚠️ Basic | ✅ Excellent | **B** |
+
+---
+
+## Conversation Continuity
+
+| Aspect | Model A | Model B |
+|--------|---------|---------|
+| Remembers previous turns | ❌ No | ✅ Yes |
+| Builds on context | ❌ No | ✅ Yes |
+| Progressive helpfulness | ❌ No | ✅ Yes |
+
+---
+
+## Issues Check
+
+| Issue Type | Model A | Model B |
+|------------|---------|---------|
+| Hallucination | ❌ None | ❌ None |
+| Incorrect Personalization | N/A | ❌ None |
+| Overnarrating | N/A | ❌ None |
+| Forced Inference | N/A | ❌ None |
+
+---
+
+---
+
+# 🏆 FINAL RANKING
+
+## Result: Model B >>> Model A
+
+| Model | Personalization Score | Recommendation |
+|-------|----------------------|----------------|
+| Model A | 2/10 | ❌ Not suitable for personalized assistant |
+| Model B | 9/10 | ✅ Excellent personalization quality |
 
 ---
 
 ## 📝 Overall Rationale
 
-**Response B is significantly better across all turns.**
+**Model B is significantly better across all dimensions.**
 
-### Grounding Analysis:
-- **Turn 1:** Response B correctly references search history (Greek beaches, Santorini), past trips (Italy, Spain → Mediterranean pattern), and calendar (August 15-25). Response A provides generic Greece suggestions.
+### Key Differentiators:
 
-- **Turn 2:** Response B uses budget preferences (mid-range, €120-180/night), specific dates, and makes a smart inference (Milos over Mykonos due to crowds). Response A gives a cookie-cutter itinerary.
+1. **Grounding:** Model B correctly uses 5 data points (search history, past trips, calendar, flight alerts, budget) while Model A uses zero.
 
-- **Turn 3:** Response B leverages the flight alerts mentioned in the user profile, provides specific timing advice (5 weeks out), and offers concrete savings (€50-100). Response A gives generic booking tips.
+2. **Integration:** Model B weaves personal context naturally — it feels like talking to an assistant who knows you. Model A feels like a generic travel website.
 
-### Personalization Quality:
-Response B demonstrates **consistent personalization** across all turns without:
-- ❌ Overnarrating (doesn't awkwardly repeat "I see you searched for...")
-- ❌ Incorrect inferences (all connections are logical)
-- ❌ Forced connections (personal data supports recommendations naturally)
+3. **Conversation Continuity:** Model B builds each turn on previous context. Turn 2 references Turn 1's 2-island suggestion. Turn 3 connects to flight alerts mentioned in Turn 2. Model A treats each turn as independent.
 
-### Helpfulness Progression:
-Response B builds on previous turns, showing **conversation memory**:
-- Turn 1: Establishes destination + suggests 2-island format
-- Turn 2: Delivers personalized itinerary with dates and budget
-- Turn 3: Addresses cost concerns with specific strategies
+4. **Helpfulness:** Model B provides actionable, specific advice (€120-180/night, save €50-100 on flights). Model A gives generic tips anyone could Google.
 
-Response A treats each turn independently with no personalization continuity.
+5. **No Overnarrating:** Model B uses personal data to *support* recommendations, not to show off what it knows. The personalization serves the user's goal.
 
----
-
-## 🏆 Final Ranking
-
-| Turn | Winner | Margin |
-|------|--------|--------|
-| Turn 1 | Response B | Significant |
-| Turn 2 | Response B | Strong |
-| Turn 3 | Response B | Significant |
-
-**Overall: Response B >>> Response A**
-
-Response B demonstrates superior multi-turn personalization through accurate grounding, natural integration, progressive helpfulness, and strong conversation continuity.
-
----
-
-## 🔍 Issues Detected
-
-| Issue Type | Response A | Response B |
-|------------|------------|------------|
-| Hallucination | ❌ None | ❌ None |
-| Incorrect Personalization | N/A (none used) | ❌ None |
-| Overnarrating | N/A | ❌ None |
-| Forced Inference | N/A | ❌ None |
+### Verdict:
+Model B demonstrates exactly what good personalization looks like: accurate grounding, natural integration, progressive helpfulness, and strong conversation memory — all without overnarrating or making forced inferences.
 
 ---
 
