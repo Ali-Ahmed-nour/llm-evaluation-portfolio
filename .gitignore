@@ -1,0 +1,26 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Python
+__pycache__/
+.env
+venv/
+
+# Personal notes
+notes/
+drafts/
+*.draft.md
+justfile
