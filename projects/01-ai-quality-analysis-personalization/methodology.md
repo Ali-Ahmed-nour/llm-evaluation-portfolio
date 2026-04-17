@@ -37,6 +37,10 @@ Evaluation Flow:
     │   1. Cross-Model Comparison                      │
     │   2. Structured Comparative Rationale            │
     └──────────────────────────────────────────────────┘
+   
+    Ali Ahmed Noureldin
+    AI Quality & LLM Evaluation | 2026
+                   
 
 ### Phase 1: Individual Model Assessment
 
