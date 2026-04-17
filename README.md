@@ -8,7 +8,7 @@ Practical evaluation projects demonstrating expertise in RLHF and AI quality ass
 
 | # | Project | Focus | Status |
 |---|---------|-------|--------|
-| 01 | [Context-Aware AI Personalization](./01-ai-quality-analysis-personalization/) | Personalization quality in multi-turn conversations | ✅ Complete |
+| 01 | [Context-Aware AI Personalization](projects/01-ai-quality-analysis-personalization) | Personalization quality in multi-turn conversations | ✅ Complete |
 | 02 | Safety & Harmlessness Evaluation | Refusal quality, harm detection, jailbreak resistance | 🔜 Coming Soon |
 
 ---
