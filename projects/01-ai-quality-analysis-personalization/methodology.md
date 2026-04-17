@@ -7,36 +7,36 @@ Great personalization should feel like genuine understanding, not a feature bein
 
 ---
 
-## Evaluation Structure
+## LLM Personalization Evaluation Framework
 
-This framework is designed for **dual-model comparison tasks**. Each task involves evaluating two separate conversations on the same prompt, then comparing them.
+This framework is designed for **dual-model comparison tasks**, particularly in personalization-focused LLM evaluation. Each task involves independently assessing two model responses to the same prompt, followed by a structured comparative analysis.
 
 Evaluation Flow:
 
-    ┌─────────────────────────────────────────┐
-    │           PHASE 1: Individual           │
-    ├─────────────────────────────────────────┤
-    │                                         │
-    │   Model A                               │
-    │   ├── 1. Classify                       │
-    │   ├── 2. Grounding                      │
-    │   ├── 3. Conversational Flow            │
-    │   ├── 4. Helpfulness                    │
-    │   ├── 5. Overall Quality                │
-    │   └── 6. Rationale                      │
-    │                                         │
-    │   Model B                               │
-    │   └── (Repeat same steps)               │
-    │                                         │
-    └─────────────────────────────────────────┘
-                        │
-                        ▼
-    ┌─────────────────────────────────────────┐
-    │         PHASE 2: Comparison             │
-    ├─────────────────────────────────────────┤
-    │   1. Compare Quality                    │
-    │   2. Write Comparison Rationale         │
-    └─────────────────────────────────────────┘
+    ┌──────────────────────────────────────────────────┐
+    │        PHASE 1: Individual Model Evaluation      │
+    ├──────────────────────────────────────────────────┤
+    │                                                  │
+    │   Model A                                        │
+    │   ├── 1. Response Classification                 │
+    │   ├── 2. Grounding Accuracy                      │
+    │   ├── 3. Conversational Naturalness              │
+    │   ├── 4. Helpfulness & Task Alignment            │
+    │   ├── 5. Overall Assessment                      │
+    │   └── 6. Structured Rationale                    │
+    │                                                  │
+    │   Model B                                        │
+    │   └── (Repeat same evaluation steps)             │
+    │                                                  │
+    └──────────────────────────────────────────────────┘
+                             │
+                             ▼
+    ┌──────────────────────────────────────────────────┐
+    │      PHASE 2: Comparative Quality Assessment     │
+    ├──────────────────────────────────────────────────┤
+    │   1. Cross-Model Comparison                      │
+    │   2. Structured Comparative Rationale            │
+    └──────────────────────────────────────────────────┘
 
 ### Phase 1: Individual Model Assessment
 
