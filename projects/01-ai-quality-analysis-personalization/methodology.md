@@ -42,6 +42,9 @@ Evaluation Flow:
     AI Quality & LLM Evaluation | 2026
                    
 
+    Ali Ahmed Noureldin
+    AI Quality & LLM Evaluation | 2026
+
 ### Phase 1: Individual Model Assessment
 
 Evaluate **each model independently** before comparing. Repeat the following steps for Model A, then for Model B.
